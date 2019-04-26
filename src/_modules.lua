@@ -11,5 +11,5 @@
 		"codelite",
 		"gmake2",
 		"d",
-		"android",
+		"codeblocks",
 	}

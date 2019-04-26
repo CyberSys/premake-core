@@ -169,6 +169,8 @@
 
 		filter "system:windows"
 			links       { "ole32", "ws2_32", "advapi32" }
+            toolset "v141_xp"
+            defines { "_USING_V110_SDK71_" }
 
 		filter "system:linux or bsd or hurd"
 			defines     { "LUA_USE_POSIX", "LUA_USE_DLOPEN" }
