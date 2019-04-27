@@ -2751,12 +2751,17 @@
 
 	function m.latestSDK10Version()
 		local arch = iif(os.is64bit(), "\\WOW6432Node\\", "\\")
-		local version = os.getWindowsRegistry("HKLM:SOFTWARE" .. arch .."Microsoft\\Microsoft SDKs\\Windows\\v10.0\\ProductVersion")
+		local regPath = "HKLM:SOFTWARE" .. arch .. "Microsoft\\Microsoft SDKs\\Windows\\"
+		local version = os.getWindowsRegistry(regPath .. "v10.0\\ProductVersion")
 		if version ~= nil then
 			return version .. ".0"
 		else
-			return nil
+			version = os.getWindowsRegistry(regPath .. "v8.1\\ProductVersion")
+            if version ~= nil then
+			    return "8.1"
+            end
 		end
+		return nil
 	end
 
 
